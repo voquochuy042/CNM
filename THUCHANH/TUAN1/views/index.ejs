@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <h1>
+        <%= data[0].tenMonHoc %>
+    </h1>
+    <table>
+        <thead>
+            <tr>
+                <td>Stt</td>
+                <td>Tên môn học</td>
+                <td>Loại môn học</td>
+                <td>Học kì</td>
+                <td>Khoa</td>
+            </tr>
+        </thead>
+        <tbody>
+            <%for(let i=0; i<data.length; i++) { %>
+                <tr>
+                    <th scope="row">
+                        <%=i + 1 %>
+                    </th>
+                    <td>
+                        <%=data[i].tenMonHoc %>
+                    </td>
+                    <td>
+                        <%=data[i].LoaiMonHoc %>
+                    </td>
+                    <td>
+                        <%=data[i].HocKi %>
+                    </td>
+                    <td>
+                        <%=data[i].Khoa %>
+                    <td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+</body>
+
+</html>
