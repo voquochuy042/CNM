@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 200px;
+        }
+        
+        .row {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .item {
+            width: 200px;
+        }
+        
+        td {
+            text-align: center;
+        }
+        
+        #btnadd {
+            padding: 0px 30px;
+            font-size: 20px;
+            align-items: center;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        h6 {
+            font-size: 20px;
+        }
+        
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+        
+        td {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>danh sách các loại giày da</h1>
+        <br/>
+        <form action="/add" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div>
+                    <h6>mã giày</h6>
+                    <input id="magiay" type="text" name="magiay" placeholder="ma giay" />
+                </div>
+                <div>
+                    <h6>tên giày</h6>
+                    <input id="tengiay" type="text" name="tengiay" placeholder="ten giay" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <h6>giá</h6>
+                    <input id="gia" type="number" name="gia" placeholder="gia" />
+                </div>
+                <div>
+                    <h6>ảnh minh họa</h6>
+                    <input type="file" class="imggg" name="image" placeholder="chọn hình" />
+                </div>
+            </div>
+            <button id="btnadd" type="submit">thêm</button>
+        </form>
+        <form action="/delete" method="post" enctype="multipart/form-data">
+            <table style="border-width: 1px;">
+                <thead>
+                    <tr>
+                        <td>mã giày</td>
+                        <td>tên giày </td>
+                        <td>giá</td>
+                        <td>hình ảnh</td>
+                        <td>
+                            <button type="submit"> xóa</button>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(product=> { %>
+                        <tr>
+                            <td>
+                                <%= product.magiay %>
+                            </td>
+                            <td>
+                                <%= product.tengiay %>
+                            </td>
+                            <td>
+                                <%= product.gia %>
+                            </td>
+                            <td>
+                                <img src="<%= product.hinhanh %>" />
+                            </td>
+                            <td>
+                                <input type="checkbox" name="ids" value="<%= product.magiay %>" />
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+
+
+</body>
+
+<script>
+    const btnadd = document.getElementById('btnadd');
+    btnadd.addEventListener('click', () => {
+        const magiay = document.getElementById('magiay').value;
+        const tengiay = document.getElementById('tengiay').value;
+        const gia = document.getElementById('gia').value;
+        if (magiay === '' || tengiay === '' || gia === '') {
+            alert('vui long nhap day du thong tin');
+            return;
+        }
+    })
+</script>
+
+</html>
